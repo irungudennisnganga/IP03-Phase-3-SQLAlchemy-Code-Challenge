@@ -1,10 +1,12 @@
 from faker import Faker
-from sqlalchemy import create_engine
 import random
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from models import Base, Restaurant, Customer, Review
-
+from models.base import Base
+from models.restaurant import Restaurant
+from models.customer import Customer
+from models.review import Review
 # Create Faker instance to generate random data for our databse
 fake = Faker()
 
