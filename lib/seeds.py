@@ -7,6 +7,7 @@ from models.base import Base
 from models.restaurant import Restaurant
 from models.customer import Customer
 from models.review import Review
+
 # Create Faker instance to generate random data for our databse
 fake = Faker()
 
@@ -25,7 +26,7 @@ session.query(Restaurant).delete()
 restaurants = [
     Restaurant(
         name=fake.company(),
-        price=random.randint(1, 4)  # Still using random for price
+        price=random.randint(1, 4) 
     )
     for _ in range(10)
 ]
