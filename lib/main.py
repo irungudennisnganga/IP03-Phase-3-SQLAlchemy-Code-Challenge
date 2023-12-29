@@ -10,6 +10,27 @@ session = Session()
 
 
 rest=session.query(customer.Customer).limit(5).all()
-print([one for one in rest])
+# print(rest)
+
+customer_1=session.query(customer.Customer).first().restaurant
+review_1=session.query(customer.Customer).first().reviewss
+full_names=customer.Customer.full_name
+
+# print(customer_1)
+# print(review_1)
+# print(full_names)
+
+restaurant_1=session.query(restaurant.Restaurant).first().reviewss
+restaurant_customer=session.query(restaurant.Restaurant).first().customer
+
+# print(restaurant_1)
+# print(restaurant_customer)
+
+review_customer =session.query(review.Review).first().customers
+review_restaurant =session.query(review.Review).first().restaurants
+
+# print(review_restaurant)
+# print(review_customer)
+
 
 session.close()

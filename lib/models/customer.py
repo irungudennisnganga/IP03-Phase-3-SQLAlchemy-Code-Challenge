@@ -21,8 +21,14 @@ class Customer(Base):
             + f"Last name {self.last_name}"
         )
 
-    def reviews(self):
+    def reviewss(self):
         return self.reviews
     
     def restaurant(self):
         return self.restaurant
+    
+    def full_name(self):
+        return f"{self.first_name} {self.last_name}"
+    
+    def favourite_restaurant(self):
+        return
