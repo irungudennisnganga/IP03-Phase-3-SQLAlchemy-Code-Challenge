@@ -23,5 +23,8 @@ class Restaurant(Base):
             + f"Price {self.price}"
         )
 
-
+    def reviews(self):
+        return self.reviews
     
+    def customers(self):
+        return self.customers

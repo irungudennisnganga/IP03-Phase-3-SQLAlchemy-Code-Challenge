@@ -20,3 +20,9 @@ class Customer(Base):
             + f"First name {self.first_name}, "
             + f"Last name {self.last_name}"
         )
+
+    def reviews(self):
+        return self.reviews
+    
+    def restaurant(self):
+        return self.restaurant

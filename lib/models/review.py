@@ -24,3 +24,9 @@ class Review(Base):
             + f"Customer Id {self.customer_id}, "
             + f"Star Rating {self.star_rating}"
         )
+
+    def customer(self):
+        return self.customer
+    
+    def restaurant(self):
+        return self.restaurant
