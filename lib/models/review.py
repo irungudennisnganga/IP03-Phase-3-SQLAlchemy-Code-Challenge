@@ -1,7 +1,5 @@
 from sqlalchemy import Column, Integer, ForeignKey
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
-
 from .base import Base
 
 
@@ -30,3 +28,7 @@ class Review(Base):
     
     def restaurants(self):
         return self.restaurant
+    
+    # Review for {insert restaurant name} by {insert customer's full name}: {insert review star_rating} stars.
+    def full_review(self):
+        return f"Review for {self.restaurant.name} by {self.customer.full_name()}: {self.star_rating}"

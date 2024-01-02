@@ -1,8 +1,9 @@
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
+from .base import Base,session
+from .review import Review
+import random
 
-from .base import Base
 
 
 class Customer(Base):
@@ -13,22 +14,57 @@ class Customer(Base):
     last_name = Column(String)
 
     reviews = relationship("Review", back_populates="customer")
-
+ 
     def __repr__(self):
         return (
             f"Customer {self.id}: "
             + f"First name {self.first_name}, "
             + f"Last name {self.last_name}"
-        )
+        )   
 
     def reviewss(self):
-        return self.reviews
+        # return self.reviews
+        # all= session.query(self.reviews).all()
+        # return all
+        pass
     
     def restaurant(self):
-        return self.restaurant
+        return self.reviews
     
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
     
+    # returns the restaurant instance that has the highest star rating from this customer
+    # for example customer index 7 has 3 reviews to diffrent restaurant check and return the restaurant with the highest rating
+    # first we need check the max star_rating using the min & max methods
+       
     def favourite_restaurant(self):
-        return
+        highest_rating = max(rate.star_rating for rate in self.reviews)
+        fav_restaurant = [ fav.restaurant for fav in self.reviews if fav.star_rating == highest_rating ]
+        return random.choice(highest_rating)   
+   
+    def add_review(self,restaurant,rating):
+        new_review = Review(
+            # Remeber to correct here on customer_id's so that it caan automatically grab the customer's id
+            customer_id=14,
+            restaurant_id=restaurant,
+            star_rating=rating
+        )
+        session.add(new_review)
+        session.commit()
+        return new_review
+    
+    #takes a `restaurant` (an instance of the `Restaurant` class) and
+
+    # removes **all** their reviews for this restaurant
+
+    # you will have to delete rows from the `reviews` table to get this to work!
+    
+    def delete_reviews(self,restaurant):
+        review_to_delete=[ review for review in self.reviews if review.restaurant_id == restaurant.id ]
+        
+        for review in review_to_delete :
+            session.delete(review)
+        # session.commit()   
+        # delete_review = session.query(Review).filter_by((Review.restaurant_id) ).all()
+        # print(delete_review)

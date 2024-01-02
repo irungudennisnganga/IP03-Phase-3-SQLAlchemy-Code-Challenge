@@ -1,11 +1,6 @@
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, Integer, String,desc
 from sqlalchemy.orm import relationship
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-
-
-from .base import Base
+from .base import Base,session
 
 
 class Restaurant(Base):
@@ -28,4 +23,15 @@ class Restaurant(Base):
         return self.reviews
     
     def customer(self):
-        return self.reviews.customers
+        # return self.reviews.Customer
+        pass
+    
+    @classmethod
+    def fanciest(cls):
+        best_restaurant=  session.query(cls).order_by(desc(cls.price)).first()
+        return best_restaurant
+        
+    def all_reviews(self):    
+        # all_data=session.query(R)
+        pass
+         
