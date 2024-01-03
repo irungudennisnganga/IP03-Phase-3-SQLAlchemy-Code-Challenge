@@ -31,7 +31,7 @@ start coding_. Remember to identify a single source of truth for your data.
 Clone the project
 
 ```bash
-  git clone https://github.com/irungudennisnganga/IP01-Wk1-Code-Challenge
+  git clone https://github.com/irungudennisnganga/IP03-Phase-3-SQLAlchemy-Code-Challenge
 ```
 
 Go to the project directory
