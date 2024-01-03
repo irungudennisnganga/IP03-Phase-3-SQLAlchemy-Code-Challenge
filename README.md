@@ -31,7 +31,7 @@ start coding_. Remember to identify a single source of truth for your data.
 Clone the project
 
 ```bash
-  git clone git@github.com:irungudennisnganga/IP01-Wk1-Code_Challenge.git
+  git clone https://github.com/irungudennisnganga/IP01-Wk1-Code-Challenge
 ```
 
 Go to the project directory
