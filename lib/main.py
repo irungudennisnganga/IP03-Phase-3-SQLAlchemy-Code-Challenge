@@ -13,27 +13,29 @@ print("Customers Examples")
 # rest=session.query(customer.Customer).limit(5).all()
 # print(rest)
 
-# customer_1=session.query(customer.Customer).get(5)
-# review_1=session.query(customer.Customer).get(5)
-# full_names=session.query(customer.Customer).get(5)
-# favourite_restaurants = customer.Customer.favourite_restaurant
-
+customer_1=session.query(customer.Customer).first()
+review_1=session.query(customer.Customer).first()
+full_names=session.query(customer.Customer).first()
+favourite_restaurants = session.query(customer.Customer).first()
 # add_reviews= customer.Customer.add_review(customer.Customer,5,4)
 
-# del_reviews= customer.Customer.delete_reviews(restaurant.Restaurant,3)
+# del_reviews= session.query(customer.Customer).first().delete_reviews
 
-# print(customer_1.restaurant())
+
 # print(review_1.reviewss())
+# print(customer_1.restaurant())
 # print(full_names.full_name())
-# print({one for one in favourite_restaurants.__dict__})
+# print(favourite_restaurants.favourite_restaurant())
+
+# customer.Customer.delete_reviews(del_reviews,2)
 
 
 print("Restaurants Example")
 
-# restaurant_1=session.query(restaurant.Restaurant).get(4)
-# restaurant_customer=session.query(restaurant.Restaurant).first()
-# one=session.query(restaurant.Restaurant).first()
-# all_restaurant_reviws= session.query(restaurant.Restaurant).get(4)
+restaurant_1=session.query(restaurant.Restaurant).first()
+restaurant_customer=session.query(restaurant.Restaurant).first()
+one=session.query(restaurant.Restaurant).first()
+all_restaurant_reviws= session.query(restaurant.Restaurant).first()
 
 # print(restaurant_1.reviewss())
 # print(restaurant_customer.customer())
@@ -42,9 +44,9 @@ print("Restaurants Example")
 
 print("Review Examples")
 
-# review_customer =session.query(review.Review).get(6)
-# review_restaurant =session.query(review.Review).get(5)
-# reviews = session.query(review.Review).get(9)  
+review_customer =session.query(review.Review).first()
+review_restaurant =session.query(review.Review).first()
+reviews = session.query(review.Review).first()  
 
 
 # print(review_customer.customers())

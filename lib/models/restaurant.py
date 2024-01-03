@@ -23,8 +23,14 @@ class Restaurant(Base):
         return self.reviews
     
     def customer(self):
-        # return self.reviews.Customer
-        pass
+        all_customers = []
+        
+        for one_customer in self.reviews:
+            all_customers.append(
+                one_customer.customer.full_name()
+            )
+        return all_customers
+        
     
     @classmethod
     def fanciest(cls):
@@ -32,6 +38,11 @@ class Restaurant(Base):
         return best_restaurant
         
     def all_reviews(self):    
-        # all_data=session.query(R)
-        pass
+        all_made_reviews=[]
+        
+        for one_review in self.reviews:
+            all_made_reviews.append(
+                f"Review for {self.name} by {one_review.customer.full_name()}: {one_review.star_rating}"
+            )
+        return all_made_reviews
          

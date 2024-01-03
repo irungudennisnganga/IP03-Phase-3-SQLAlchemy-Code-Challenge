@@ -22,31 +22,30 @@ class Customer(Base):
             + f"Last name {self.last_name}"
         )   
 
+    #  should return a collection of all the reviews that the `Customer` has left
     def reviewss(self):
-        # return self.reviews
-        # all= session.query(self.reviews).all()
-        # return all
-        pass
+        return self.reviews
     
     def restaurant(self):
-        return self.reviews
+        all_restaurant = []
+        for one_restaurant in self.reviews:
+            all_restaurant.append(
+               one_restaurant.restaurant.name
+            )
+        return all_restaurant
     
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
-    
-    # returns the restaurant instance that has the highest star rating from this customer
-    # for example customer index 7 has 3 reviews to diffrent restaurant check and return the restaurant with the highest rating
-    # first we need check the max star_rating using the min & max methods
        
     def favourite_restaurant(self):
         highest_rating = max(rate.star_rating for rate in self.reviews)
         fav_restaurant = [ fav.restaurant for fav in self.reviews if fav.star_rating == highest_rating ]
-        return random.choice(highest_rating)   
+        return random.choice(fav_restaurant) if fav_restaurant else None  
    
     def add_review(self,restaurant,rating):
         new_review = Review(
             # Remeber to correct here on customer_id's so that it caan automatically grab the customer's id
-            customer_id=14,
+            customer_id=12,
             restaurant_id=restaurant,
             star_rating=rating
         )
@@ -61,10 +60,10 @@ class Customer(Base):
     # you will have to delete rows from the `reviews` table to get this to work!
     
     def delete_reviews(self,restaurant):
-        review_to_delete=[ review for review in self.reviews if review.restaurant_id == restaurant.id ]
+        review_to_delete=[ review for review in self.reviews if review.restaurant_id == restaurant ]
         
         for review in review_to_delete :
             session.delete(review)
-        # session.commit()   
+        session.commit()   
         # delete_review = session.query(Review).filter_by((Review.restaurant_id) ).all()
         # print(delete_review)
