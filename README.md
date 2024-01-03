@@ -177,7 +177,7 @@ Restaurant
 
 ## Author
 
-*[irungudennis](https://github.com/irungudenninganga)
+*[irungudennis](https://github.com/irungudennisnganga/irungudennisnganga)
 
 ## License  
 
