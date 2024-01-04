@@ -24,12 +24,7 @@ class Restaurant(Base):
         return self.reviews
     
     def customer(self):
-        all_customers = []
-        
-        for one_customer in self.reviews:
-            all_customers.append(
-                one_customer.customer.full_name()
-            )
+        all_customers = [ one_customer.customer.full_name() for one_customer in self.reviews]
         return all_customers
         
     

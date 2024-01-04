@@ -18,6 +18,7 @@ customer_1=session.query(customer.Customer).first()
 review_1=session.query(customer.Customer).first()
 full_names=session.query(customer.Customer).first()
 favourite_restaurants = session.query(customer.Customer).first()
+
 # add_reviews= customer.Customer.add_review(customer.Customer,5,4)
 
 # del_reviews= session.query(customer.Customer).first().delete_reviews
