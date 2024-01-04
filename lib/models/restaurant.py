@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from sqlalchemy import Column, Integer, String,desc
 from sqlalchemy.orm import relationship
 from .base import Base,session
